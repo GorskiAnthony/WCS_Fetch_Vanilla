@@ -6,6 +6,7 @@
 
 // Ici, je déclare une constante API qui est le endpoint de l'API
 const API = "https://api.chucknorris.io/jokes/random";
+const RENDER = document.querySelector(".render");
 
 // Je créer une fonction qui va me permettre de récupérer les données de l'API
 function getJoke() {
@@ -16,7 +17,17 @@ function getJoke() {
 		// je console.log() les données récupérées
 		.then((data) => {
 			console.log(data);
+			// Je vais ensuite afficher les données dans mon HTML
+			// grâce à la fonction render()
+			render(data.value);
 		});
+}
+
+// La fonction render à pour but d'afficher les données dans mon HTML
+// Elle prend en charge 1 paramètre, qui est le texte à afficher
+function render(quote) {
+	const html = `<span class="quote">${quote}</span>`;
+	RENDER.innerHTML = html;
 }
 
 // j'appel ma fonction getJoke()
