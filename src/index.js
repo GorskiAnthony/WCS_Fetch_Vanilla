@@ -7,6 +7,8 @@
 // Ici, je déclare une constante API qui est le endpoint de l'API
 const API = "https://api.chucknorris.io/jokes/random";
 const RENDER = document.querySelector(".render");
+// Je vais chercher mon bouton dans mon HTML
+const BUTTON = document.querySelector("button");
 
 // Je créer une fonction qui va me permettre de récupérer les données de l'API
 function getJoke() {
@@ -16,7 +18,7 @@ function getJoke() {
 		.then((response) => response.json())
 		// je console.log() les données récupérées
 		.then((data) => {
-			console.log(data);
+			//console.log(data);
 			// Je vais ensuite afficher les données dans mon HTML
 			// grâce à la fonction render()
 			render(data.value);
@@ -32,3 +34,6 @@ function render(quote) {
 
 // j'appel ma fonction getJoke()
 getJoke();
+
+// Et je lance ma fonction getJoke() au click sur mon bouton
+BUTTON.addEventListener("click", getJoke);
